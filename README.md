@@ -1,3 +1,3 @@
 # AirthingsPythonAPI
 
-This code involves using a flask as a front-end interface to a pure Python 3 implementation of accessing the Airthings API over OAuth2.
+This code involves using Flask as a front-end interface using framework agnostic Python3 code to access the Airthings API over OAuth2.
