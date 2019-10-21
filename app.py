@@ -3,19 +3,16 @@ import json
 import os
 # Third-party libraries
 from flask import Flask, redirect, request, jsonify
-from flask_cors import CORS
 
 # Airthings library
-from AirthingsAccount_bd import AirthingsAccount
+from AirthingsAccount import AirthingsAccount
 
-# Get client id and secret
+# Get client id and secret from environment variables
 AIRTHINGS_CLIENT_ID = os.environ.get("AIRTHINGS_CLIENT_ID", None)
 AIRTHINGS_CLIENT_SECRET = os.environ.get("AIRTHINGS_CLIENT_SECRET", None)
 
 # Basic flask app setup
 app = Flask(__name__, static_url_path='/static') # set static pat
-
-CORS(app)
 
 # Initialize oauth2 for Airthings API
 myAccount = AirthingsAccount(
