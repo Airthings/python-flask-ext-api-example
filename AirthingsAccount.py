@@ -64,7 +64,7 @@ class AirthingsAccount:
             authorization_response = authurl
             token = self.oauth.fetch_token(
                 token_url=self.token_url,
-                client_id=self.client_secret,
+                client_id=self.client_id,
                 include_client_id=True,
                 client_secret=self.client_secret,
                 authorization_response=authorization_response
