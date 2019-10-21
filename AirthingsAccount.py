@@ -2,9 +2,14 @@
 import requests
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import TokenExpiredError
+import os
 import json
 import logging
 import logging.config
+
+# Allows oauth to run in debug mode
+# Remove this from production code
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 class AirthingsAccount:
     authorization_url = "https://accounts.dev.airthings.com/authorize"

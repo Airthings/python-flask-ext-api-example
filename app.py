@@ -18,7 +18,7 @@ app = Flask(__name__, static_url_path='/static') # set static pat
 myAccount = AirthingsAccount(
     client_id=AIRTHINGS_CLIENT_ID,
     client_secret=AIRTHINGS_CLIENT_SECRET,
-    redirect_uri="https://localhost:3000/callback"
+    redirect_uri="http://localhost:3000/callback"
 )
 
 @app.route("/")
@@ -82,4 +82,4 @@ def thresholdBreaches(deviceId):
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(ssl_context='adhoc', debug=True, port=3000)
+    app.run(debug=True, port=3000)
