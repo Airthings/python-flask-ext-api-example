@@ -15,3 +15,4 @@ git clone https://github.com/Airthings/python-flask-ext-api-example
 cd python-flask-ext-api-example
 pip install -r requirements.txt
 ```
+[![asciicast](https://asciinema.org/a/F85r5vejz4NdDkG2kMbPgrlVn.svg)](https://asciinema.org/a/F85r5vejz4NdDkG2kMbPgrlVn)
