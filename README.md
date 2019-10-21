@@ -15,4 +15,4 @@ git clone https://github.com/Airthings/python-flask-ext-api-example
 cd python-flask-ext-api-example
 pip install -r requirements.txt
 ```
-![visualexample](https://i.imgur.com/V5aUwve.gif)
+<img src="https://i.imgur.com/V5aUwve.gif" width="50%">
