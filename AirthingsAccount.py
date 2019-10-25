@@ -12,9 +12,9 @@ import logging.config
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 class AirthingsAccount:
-    authorization_url = "https://accounts.dev.airthings.com/authorize"
-    token_url = "https://accounts-api.dev.airthings.com/v1/token"
-    ext_url = "https://ext-api.dev.airthings.com/v1/"
+    authorization_url = "https://accounts.airthings.com/authorize"
+    token_url = "https://accounts-api.airthings.com/v1/token"
+    ext_url = "https://ext-api.airthings.com/v1/"
     client = None
     access_token = ""
     refresh_token = ""
