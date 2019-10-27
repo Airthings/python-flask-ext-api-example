@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+    <title>Airthings</title>
+</head>
+<body>
+<div class="app">
+    <header class="header">
+        <img src="/static/img/logo-large-horizontal.png" alt="logo">
+    </header>
+    <div class="sidebar">
+        <div class="sidebar__wrapper">
+            <div class="sidebar__text__wrapper">
+                <div class="sidebar__text">Api endpoints</div>
+            </div>
+            <ul class="sidebar__links">
+                <li><a href="/devices">Devices</a></li>
+                <li><a href="/devices/2930000560">Device by id</a></li>
+                <li><a href="/locations">Locations</a></li>
+                <li><a href="/devices/2930000560/latest-sample">Latest Samples</a></li>
+                <li><a href="/devices/2930000560/threshold-breaches">Threshold breaches</a></li>
+                <li><a href="/segments">Segments</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="docs">
+        <div class="docs-wrapper">
+            <h1 class="docs__title">Welcome to Airthings Ext-API</h1>
+            <div class="docs__description">
+                Click one of the links to the left to fetch your Airthings data.
+            </div>
+            <div class="code-box">
+                 <pre>
+                     <code>
+                        {% if data %}
+                        {{data}}
+                        {% endif %}
+                     </code>
+                 </pre>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
