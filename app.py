@@ -10,7 +10,7 @@ from AirthingsAccount import AirthingsAccount
 # Get client id and secret from environment variables
 AIRTHINGS_CLIENT_ID = os.environ.get("AIRTHINGS_CLIENT_ID", None)
 AIRTHINGS_CLIENT_SECRET = os.environ.get("AIRTHINGS_CLIENT_SECRET", None)
-
+APP_REDIRECT_URI = os.environ.get("APP_REDIRECT_URI", None)
 # Basic flask app setup
 app = Flask(__name__, static_url_path='/static', template_folder='templates')
 
@@ -18,7 +18,7 @@ app = Flask(__name__, static_url_path='/static', template_folder='templates')
 myAccount = AirthingsAccount(
     client_id=AIRTHINGS_CLIENT_ID,
     client_secret=AIRTHINGS_CLIENT_SECRET,
-    redirect_uri="http://localhost:3000/callback"
+    redirect_uri=APP_REDIRECT_URI
 )
 
 @app.route("/")
