@@ -25,7 +25,7 @@ class AirthingsAccount:
         self.client_id = client_id
         self.client_secret = client_secret
         self.redirect_uri = redirect_uri
-        self.oauth = OAuth2Session(client_id=self.client_id, redirect_uri=self.redirect_uri)
+        self.oauth = OAuth2Session(client_id=self.client_id, redirect_uri=self.redirect_uri, scope=['read:device'])
 
 
     def getEndpoint(self, endpoint):
