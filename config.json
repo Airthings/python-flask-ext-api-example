@@ -1,0 +1,5 @@
+{
+    "clientId": "<enter-client-id>",
+    "clientSecret": "<enter-client-secret>",
+    "redirectUri": "http://<host>/callback"
+  }

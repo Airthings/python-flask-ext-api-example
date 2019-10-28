@@ -7,14 +7,20 @@ from flask import Flask, redirect, request, jsonify, render_template
 # Airthings library
 from AirthingsAccount import AirthingsAccount
 
-# Get client id and secret from environment variables
-AIRTHINGS_CLIENT_ID = os.environ.get("AIRTHINGS_CLIENT_ID", None)
-AIRTHINGS_CLIENT_SECRET = os.environ.get("AIRTHINGS_CLIENT_SECRET", None)
-APP_REDIRECT_URI = os.environ.get("APP_REDIRECT_URI", None)
+AIRTHINGS_CLIENT_ID = ""
+AIRTHINGS_CLIENT_SECRET = ""
+APP_REDIRECT_URI = ""
+# Get client id and secret from config.json
+with open('config.json', 'r') as f:
+    config_variables = json.load(f)
+    AIRTHINGS_CLIENT_ID = config_variables['clientId']
+    AIRTHINGS_CLIENT_SECRET = config_variables['clientSecret']
+    APP_REDIRECT_URI = config_variables['redirectUri']
 # Basic flask app setup
 app = Flask(__name__, static_url_path='/static', template_folder='templates')
 
 # Initialize oauth2 for Airthings API
+
 myAccount = AirthingsAccount(
     client_id=AIRTHINGS_CLIENT_ID,
     client_secret=AIRTHINGS_CLIENT_SECRET,
