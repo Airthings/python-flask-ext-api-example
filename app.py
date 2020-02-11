@@ -91,4 +91,4 @@ def thresholdBreaches(deviceId):
     return render_template('index.html', data=json.dumps(data, sort_keys=True, indent=4))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=3001)
+    app.run(debug=True, port=3000)
