@@ -7,15 +7,16 @@ from flask import Flask, redirect, request, jsonify, render_template
 # Airthings library
 from AirthingsAccount import AirthingsAccount
 
-AIRTHINGS_CLIENT_ID = ""
-AIRTHINGS_CLIENT_SECRET = ""
-APP_REDIRECT_URI = ""
 # Get client id and secret from config.json
-with open('config.json', 'r') as f:
-    config_variables = json.load(f)
-    AIRTHINGS_CLIENT_ID = config_variables['clientId']
-    AIRTHINGS_CLIENT_SECRET = config_variables['clientSecret']
-    APP_REDIRECT_URI = config_variables['redirectUri']
+try:
+    with open('config.json', 'r') as f:
+        config_variables = json.load(f)
+        AIRTHINGS_CLIENT_ID = config_variables['clientId']
+        AIRTHINGS_CLIENT_SECRET = config_variables['clientSecret']
+        APP_REDIRECT_URI = config_variables['redirectUri']
+except FileNotFoundError:
+    print('No config.json found')
+
 # Basic flask app setup
 app = Flask(__name__, static_url_path='/static', template_folder='templates')
 
