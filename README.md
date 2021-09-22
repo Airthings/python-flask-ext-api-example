@@ -1,6 +1,6 @@
 # Accessing the Airthings Api with Python and Flask
 
-This sample code involves using a simple Flask webapp providing a front-end interface using the [requests-oauthlib](https://github.com/requests/requests-oauthlib) Python3 library to access the Airthings API using the Authorization Grant OAuth2 flow.
+This sample code involves using a simple Flask webapp providing a front-end interface using the [requests-oauthlib](https://github.com/requests/requests-oauthlib) Python3 library to access the Airthings for Business API using the Authorization Grant OAuth2 flow.
 
 Please note that this is a basic example created only to show how to access information from the Airthings API. **Do not** use this code in production without first implementing standard security within your web application.
 
@@ -8,6 +8,9 @@ Please note that this is a basic example created only to show how to access info
 
 * [Python 3](https://www.python.org/downloads/)
 * [pip](https://packaging.python.org/tutorials/installing-packages/) to install the python packages for the project
+
+### Compatibility
+This example is built to work with the Airthings for Business API.
 
 ## Installation
 
@@ -75,3 +78,4 @@ Currently only `GET` requests are supported, which are listed in the [API docume
 ### Securing API Credentials
 
 There are a number of ways to supply API credentials to the `AirthingsAccount` class. It is critical to never include client secrets within your web app directly. This can lead to a number of security risks that may compromise your account information.
+
