@@ -49,11 +49,11 @@ class AirthingsAccount:
     def getThresholdBreaches(self, deviceId):
         return self.getEndpoint('devices/' + deviceId + '/threshold-breaches')
 
-    def getLatestSegment(self, devideId):
-        return self.getEndpoint('devices/' + devideId + '/latest-segment')
+    def getLatestSegment(self, deviceId):
+        return self.getEndpoint('devices/' + deviceId + '/latest-segment')
 
-    def getDeviceSample(self, devideId):
-        return self.getEndpoint('devices/' + devideId + '/samples')
+    def getDeviceSample(self, deviceId):
+        return self.getEndpoint('devices/' + deviceId + '/samples')
 
     def getLocations(self):
         return self.getEndpoint('locations')
