@@ -28,13 +28,13 @@ class AirthingsAccount:
         self.oauth = OAuth2Session(client_id=self.client_id, redirect_uri=self.redirect_uri, scope=['read:device'])
 
     def get_endpoint(self, endpoint, query_string=None):
-        query_string = query_string.decode('utf-8')
+        query_string = query_string.decode('utf-8') if query_string else ''
         try:
-            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}' if query_string else ''}")
+            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}'}")
             return json.loads(r.content)
         except TokenExpiredError:
             self.client.refresh_token(self.token_url)
-            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}' if query_string else ''}")
+            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}'}")
             return json.loads(r.content)
 
     def get_devices(self, device_id=None, query_string=None):
