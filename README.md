@@ -14,7 +14,7 @@ This example is built to work with the Airthings for Business API.
 
 ## Installation
 
-To setup the example Flask webapp simply run the following from the command line:
+To set up the example Flask webapp simply run the following from the command line:
 ```
 git clone https://github.com/Airthings/python-flask-ext-api-example
 cd python-flask-ext-api-example
@@ -49,31 +49,31 @@ The `AirthingsAccount` class within the `AirthingsAccount.py` file can be used t
 Initialize the AirthingsAccount with your API credentials.
 
 ```python
-myAccount = AirthingsAccount(
-    client_id=AIRTHINGS_CLIENT_ID,
-    client_secret=AIRTHINGS_CLIENT_SECRET,
-    redirect_uri=APP_REDIRECT_URI
+my_account = AirthingsAccount(
+    client_id     = AIRTHINGS_CLIENT_ID,
+    client_secret = IRTHINGS_CLIENT_SECRET,
+    redirect_uri  = APP_REDIRECT_URI
 )
 ```
 #### Step 2
 
-The `getAuthorization` function returns an authorization URL that will provide a link provided by Airthings that will let you log into your account via username and password. Upon logging in you will then be redirected to the *redirect URI* that you provided.
+The `get_authorization` function returns an authorization URL that will provide a link provided by Airthings that will let you log into your account via username and password. Upon logging in you will then be redirected to the *redirect URI* that you provided.
 
 ```python
-myAccount.getAuthorization()
+my_account.get_authorization()
 ```
 
 #### Step 3
 
-Ideally, the *redirect URI* will contain a `code` that can be used to fetch access tokens. The `getAccessToken` function can be provided with the redirected page URL you were sent to from the previous step to allow you to get your access token.
+Ideally, the *redirect URI* will contain a `code` that can be used to fetch access tokens. The `get_access_token` function can be provided with the redirected page URL you were sent to from the previous step to allow you to get your access token.
 
 ```python
-myAccount.getAccessToken(request.url)
+my_account.get_access_token(request.url)
 ```
 
 #### Making Requests
 
-Currently only `GET` requests are supported, which are listed in the [API documentation](https://accounts.airthings.com/api-docs). The routes defined in the `app.py` file detail how these requests can be made, while the `index.html` can display basic JSON results.
+Currently, only `GET` requests are supported, which are listed in the [API documentation](https://accounts.airthings.com/api-docs). The routes defined in the `app.py` file detail how these requests can be made, while the `index.html` can display basic JSON results.
 
 ### Securing API Credentials
 

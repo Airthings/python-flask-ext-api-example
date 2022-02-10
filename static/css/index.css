@@ -70,8 +70,8 @@ li:hover{
     position: fixed;
     height: calc(100% - 120px);
     bottom: 0;
+    left: 300px;
     width: 100%;
-    margin-left: 300px;
 }
 
 .docs-wrapper {
