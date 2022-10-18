@@ -32,7 +32,7 @@ python app.py
 
 ## Basic Usage
 
-Please refer to the [**Getting Started guide**](https://developer.airthings.com/docs/api.html) for a more generalized overview of accessing the the Airthings API.
+Please refer to the [**Getting Started guide**](https://developer.airthings.com/docs/api-getting-started/index.html) for a more generalized overview of accessing the the Airthings API.
 
 Before starting ensure you have your credentials:
 * Airthings Client Id
