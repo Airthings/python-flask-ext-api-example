@@ -1,5 +1,4 @@
 # coding=utf-8
-import requests
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import TokenExpiredError
 import os
@@ -10,6 +9,7 @@ import logging.config
 # Allows oauth to run in debug mode
 # Remove this from production code
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 
 class AirthingsAccount:
     authorization_url = "https://accounts.airthings.com/authorize"
@@ -27,46 +27,46 @@ class AirthingsAccount:
         self.redirect_uri = redirect_uri
         self.oauth = OAuth2Session(client_id=self.client_id, redirect_uri=self.redirect_uri, scope=['read:device'])
 
-
-    def getEndpoint(self, endpoint):
+    def get_endpoint(self, endpoint, query_string=None):
+        query_string = query_string.decode('utf-8') if query_string else ''
         try:
-            r = self.client.get(self.ext_url + endpoint)
+            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}'}")
             return json.loads(r.content)
         except TokenExpiredError:
             self.client.refresh_token(self.token_url)
-            r = self.client.get(self.ext_url + endpoint)
+            r = self.client.get(f"{self.ext_url}{endpoint}{f'?{query_string}'}")
             return json.loads(r.content)
 
-    def getDevices(self, deviceId=None):
-        if deviceId:
-            return self.getEndpoint('devices/' + deviceId)
+    def get_devices(self, device_id=None, query_string=None):
+        if device_id:
+            return self.get_endpoint(f"devices/{device_id}", query_string)
         else:
-            return self.getEndpoint('devices')
-    
-    def getLatestSample(self, deviceId):
-        return self.getEndpoint('devices/' + deviceId + '/latest-samples')
+            return self.get_endpoint("devices", query_string)
 
-    def getThresholdBreaches(self, deviceId):
-        return self.getEndpoint('devices/' + deviceId + '/threshold-breaches')
+    def get_latest_sample(self, device_id, query_string=None):
+        return self.get_endpoint(f"devices/{device_id}/latest-samples", query_string)
 
-    def getLatestSegment(self, deviceId):
-        return self.getEndpoint('devices/' + deviceId + '/latest-segment')
+    def get_threshold_breaches(self, device_id, query_string=None):
+        return self.get_endpoint(f"devices/{device_id}/threshold-breaches", query_string)
 
-    def getDeviceSample(self, deviceId):
-        return self.getEndpoint('devices/' + deviceId + '/samples')
+    def get_latest_segment(self, device_id, query_string=None):
+        return self.get_endpoint(f"devices/{device_id}/latest-segment", query_string)
 
-    def getLocations(self):
-        return self.getEndpoint('locations')
+    def get_device_sample(self, device_id, query_string=None):
+        return self.get_endpoint(f"devices/{device_id}/samples", query_string)
 
-    def getSegments(self):
-        return self.getEndpoint('segments')
-    
-    def getSamplesFromSegment(self, segment):
-        return self.getEndpoint('segments' + segment + '/samples')
+    def get_locations(self, query_string=None):
+        return self.get_endpoint("locations", query_string)
 
-    def getAccessToken(self, authurl):
+    def get_segments(self, query_string=None):
+        return self.get_endpoint("segments", query_string)
+
+    def get_samples_from_segment(self, segment, query_string=None):
+        return self.get_endpoint(f"segments/{segment}/samples", query_string)
+
+    def get_access_token(self, auth_url):
         if not self.client:
-            authorization_response = authurl
+            authorization_response = auth_url
             token = self.oauth.fetch_token(
                 token_url=self.token_url,
                 client_id=self.client_id,
@@ -85,9 +85,9 @@ class AirthingsAccount:
             self.logger.error('Error occurred, you have already fetched your access token.')
             return json.loads('{"Error":"Access token already fetched."}')
 
-    def getAuthorization(self):
+    def get_authorization(self):
         self.logger.info('Getting authorization from Accounts')
-        try:    
+        try:
             authorization_url, state = self.oauth.authorization_url(self.authorization_url)
             return authorization_url
         except:
